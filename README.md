@@ -7,15 +7,15 @@ The program need an input file containing the number of states, the name of
 each topology file, the number of q atoms, and an one to one map (see tests).
 The command ”./qfeper h” will print out the format of instruction file.
 
-### The program usage: ###
+### How to use: ###
     ./qfeper   h                    For instruction file format 
     ./qfeper  "input"               For creating FEP file 
     ./qfeper  "input" p             For printing details information on std output 
     ./qfeper  "input" s             For splitting the FEP file to 2 states FEP files 
     ./qfeper  "input" sp            It is also accepted to add both functions (sp or ps) 
 
-### Contribution guidelines ###
-How it works:
+### How it works: ###
+
 The reference state is the first topology file. All atom numbers is translated
 to first state numbering. Only the bond, angle, torsion, and improper will be
 considered that their atoms are q atoms. This implies that user have to choose
