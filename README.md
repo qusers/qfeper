@@ -1,29 +1,9 @@
-# README #
+# qfeper #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+### Introduction: ###
 
-### What is this repository for? ###
-
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
-
-### How do I get set up? ###
-
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+* [qfeper is a program to write the fep files that is used by Q pacakge. For each
+state, one topology file is needed and all information is read from topology files.
+The program need an input file containing the number of states, the name of
+each topology file, the number of q atoms, and an one to one map (see tests).
+The command ”./qfeper h” will print out the format of instruction file.]
