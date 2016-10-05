@@ -1,0 +1,49 @@
+# introduction
+qfeper is a program to write the fep files used by Q pacakge.
+for each state one topology file is needed. all information 
+is read from topology files. the program need an input file
+containing the number of states and the name of each topology
+file. plus the number of q atom and an one to one map is also
+needed. the command "./qfeper h" will print out the format of
+instruction file. the program usage is as follow
+
+        ./qfeper h               for instruction file format
+        ./qfeper input           for creating fep file
+        ./qfeper input p         for printing details information on std output 
+        ./qfeper input s         for spliting the fep file to 2 states fep files 
+        ./qfeper input sp(or ps) is also accepted to add both functions
+
+# how it works
+The reference state is the first topology file. all atom numbers
+is translated to first state numbering. only the bond, angle, 
+torsion, and improper will be considered that their atoms are q
+atoms. this implies that user have to choose q atom so that its
+range cover all possible perturbation. subsequently, the parameters
+will be compared in different states and only the ones that are 
+changing will be printed out to fep file. the proccedure is different
+for atom types and charges. all of q atoms type and charge will be
+added to fep file (it make it easier to further manipulate the 
+fep/EVB if needed and have no effect on final results). the coupling 
+will be suggested based on presence of beaking/forming bond in a
+angle, torsion and improper. this might be uneccessary sice if an
+angle, torsion or improper include a breaking/forming bond, it will 
+be set to 0 in coresbonding states. the program can handel more than 
+two states; however, the write out format might be messy in case of
+more than three states.
+
+# how to compile
+qfeper was compiled and tested by ifort and gfortran in linux(ubuntu).
+the compile command is as follow
+
+        ifort qfeper_pars.f90  qfeper_analyz.f90 qfeper.f90 -o qfeper
+    or
+        gfortran qfeper_pars.f90  qfeper_analyz.f90 qfeper.f90 -o qfeper
+
+for developers
+        ifort -check all -debug all qfeper_pars.f90  qfeper_analyz.f90 qfeper.f90 -o qfeper
+    or
+        
+
+2014/06/08
+Masoud Kazemi
+kazemimsoud@gmail.com
