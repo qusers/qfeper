@@ -1,49 +1,50 @@
-# introduction
-qfeper is a program to write the fep files used by Q pacakge.
-for each state one topology file is needed. all information 
-is read from topology files. the program need an input file
-containing the number of states and the name of each topology
-file. plus the number of q atom and an one to one map is also
-needed. the command "./qfeper h" will print out the format of
-instruction file. the program usage is as follow
+\documentclass{article}
+\author{Masoud Kazemi}
 
-        ./qfeper h               for instruction file format
-        ./qfeper input           for creating fep file
-        ./qfeper input p         for printing details information on std output 
-        ./qfeper input s         for spliting the fep file to 2 states fep files 
-        ./qfeper input sp(or ps) is also accepted to add both functions
+\begin{document}
+\pagenumbering{gobble}
+\section*{Introduction:}
+qfeper is a program to write the fep files that is used by Q pacakge.
+For each state, one topology file is needed and all information 
+is read from topology files. The program need an input file
+containing the number of states, the name of each topology
+file, the number of q atoms, and an one to one map (see tests).
+The command "./qfeper h" will print out the format of
+instruction file.
+\subsection*{The program usage:}
+    ./qfeper \hspace{0.5cm} h                  \hspace{1.7cm}  For instruction file format\newline
+    ./qfeper \hspace{0.5cm} "input"            \hspace{.7cm}  For creating fep file\newline
+    ./qfeper \hspace{0.5cm} "input" p          \hspace{.4cm} For printing details information on std output\newline 
+    ./qfeper \hspace{0.5cm} "input" s          \hspace{.5cm} For spliting the fep file to 2 states fep files\newline
+    ./qfeper \hspace{0.5cm} "input" sp         \hspace{.3cm} It is also accepted to add both functions (sp or ps)\newline
 
-# how it works
-The reference state is the first topology file. all atom numbers
-is translated to first state numbering. only the bond, angle, 
+\subsection*{How it works:}
+The reference state is the first topology file. All atom numbers
+is translated to first state numbering. Only the bond, angle, 
 torsion, and improper will be considered that their atoms are q
-atoms. this implies that user have to choose q atom so that its
-range cover all possible perturbation. subsequently, the parameters
+atoms. This implies that user have to choose the q atoms so that its
+range cover all possible perturbation. Subsequently, the parameters
 will be compared in different states and only the ones that are 
-changing will be printed out to fep file. the proccedure is different
-for atom types and charges. all of q atoms type and charge will be
+changing will be printed out to fep file. The proccedure is different
+for atom types and charges. All of q atoms type and charge will be
 added to fep file (it make it easier to further manipulate the 
-fep/EVB if needed and have no effect on final results). the coupling 
+fep/EVB if needed and have no effect on final results). The coupling 
 will be suggested based on presence of beaking/forming bond in a
-angle, torsion and improper. this might be uneccessary sice if an
-angle, torsion or improper include a breaking/forming bond, it will 
-be set to 0 in coresbonding states. the program can handel more than 
-two states; however, the write out format might be messy in case of
+angle, torsion and improper. The program can handel more than 
+two states; however, the write out format might become messy in case of
 more than three states.
 
-# how to compile
+\subsection*{How to compile:}
 qfeper was compiled and tested by ifort and gfortran in linux(ubuntu).
-the compile command is as follow
+The compile command is as follow:
+\begin{verbatim}
+ifort:
+"ifort qfeper_pars.f90  qfeper_analyz.f90 qfeper.f90 -o qfeper"
+gfortran:
+"gfortran qfeper_pars.f90  qfeper_analyz.f90 qfeper.f90 -o qfeper"
+debugging:
+"ifort -check all -debug all qfeper_pars.f90  qfeper_analyz.f90 qfeper.f90 -o qfeper"
+\end{verbatim}
 
-        ifort qfeper_pars.f90  qfeper_analyz.f90 qfeper.f90 -o qfeper
-    or
-        gfortran qfeper_pars.f90  qfeper_analyz.f90 qfeper.f90 -o qfeper
-
-for developers
-        ifort -check all -debug all qfeper_pars.f90  qfeper_analyz.f90 qfeper.f90 -o qfeper
-    or
-        
-
-2014/06/08
-Masoud Kazemi
-kazemimsoud@gmail.com
+\paragraph{Masoud Kazemi  kazemimsoud@gmail.com}
+\end{document}
