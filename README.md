@@ -27,7 +27,7 @@ file (it make it easier to further manipulate the fep/EVB if needed and have
 no effect on final results). The coupling will be suggested based on presence
 of breaking/forming bond in a angle, torsion and improper. The program can
 handle more than two states; however, the write out format might become messy
-in case of more than three states.
+in case of more than six states.
 
 
 ###How to compile:###
