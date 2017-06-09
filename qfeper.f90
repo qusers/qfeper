@@ -293,7 +293,7 @@ end if
 
 if(q_lib%bond_flag) then
 if(q_lib%angl_flag) then
-        if (size(a_kapl(:,1)) .gt. 0) then
+        if ( (size(a_kapl(:,1)) .gt. 0) .and. allocated(a_kapl) ) then
         write (u,'(/,a17)'),"[angle_couplings]"
         do i=1,size(a_kapl(:,1))
                         write(u,'(i3,3X)',advance="no"),a_kapl(i,1)
@@ -306,7 +306,7 @@ if(q_lib%angl_flag) then
 end if
 
 if(q_lib%tors_flag) then
-        if (size(t_kapl(:,1)) .gt. 0) then
+        if ( (size(t_kapl(:,1)) .gt. 0) .and. allocated(t_kapl) )then
         !get the number of guessed couplings
         write (u,'(/,a20)'),"[torsion_couplings]"
         do i=1,size(t_kapl(:,1))
@@ -323,7 +323,7 @@ if(q_lib%tors_flag) then
 end if
 
 if(q_lib%impr_flag) then
-        if (size(i_kapl(:,1)) .gt. 0) then
+        if ( (size(i_kapl(:,1)) .gt. 0) .and. allocated(i_kapl) )  then
         write (u,'(/,a22)'),"[improper_couplings]"
         do i=1,size(i_kapl(:,1))
              write(u,'(i3,3X)',advance="no"),i_kapl(i,1)

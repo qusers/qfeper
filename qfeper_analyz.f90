@@ -743,6 +743,7 @@ print*,"all-Q-improper"
 write(nstate_char,'(i4)') nstate
         write(qformat,*) "(i4,X,i4,X,i4,X,i4,X,i4,X,",trim(adjustl(nstate_char)),"(f8.3,X),",trim(adjustl(nstate_char)), &
                                                                                                                 "(f8.3,X))"
+
 do i=1,length !over lib
 write(*,qformat),i,q_lib_tm2%impr(i,1)%a1,q_lib_tm2%impr(i,1)%a2,q_lib_tm2%impr(i,1)%a3,q_lib_tm2%impr(i,1)%a4 &
                                             ,(q_lib_tm2%impr(i,h)%force,h=1,nstate),(q_lib_tm2%impr(i,h)%dis,h=1,nstate)
