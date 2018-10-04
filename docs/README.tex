@@ -1,0 +1,79 @@
+\documentclass[12pt, oneside]{article}
+\usepackage[left=2.00cm,bottom=2.00cm,top=0.20cm,right=2.54cm]{geometry}
+\usepackage{xcolor}
+\usepackage{listings}
+\lstset{showstringspaces=true,
+  commentstyle=\color{red},
+  keywordstyle=\color{blue}
+}
+\author{Masoud Kazemi}
+\title{qfeper}
+\date{\today}
+
+
+\begin{document}
+\maketitle
+\pagenumbering{gobble}
+
+\section*{Introduction:}
+\textbf{qfeper} is a program to write fep files used by the \textbf{Q} package. For each
+state, one topology file is needed and all information is read from topology files.
+The program needs an input file containing the number of states, the name of
+each topology file, the number of q atoms, and a one to one mapping (see tests).
+The command \textit{./qfeper}Äù will print out the format of instruction file.
+\subsection*{Program usage:}
+\begin{verbatim}
+./qfeper h              # For instruction file format
+./qfeper input          # For creating fep file
+./qfeper input p        # For printing details information on std output
+./qfeper input s        # For spliting the fep file to 2 states fep files
+./qfeper input sp       # It is also accepted to add both functions (sp or ps)
+\end{verbatim}
+
+\subsection*{How it works:}
+The reference state is the first topology file. All atom numbers are translated
+to first state numbering. Only the bond, angle, torsion, and improper will be
+considered that their atoms are q atoms. This implies that the user has to choose
+the q atoms so that its range covers all possible perturbation. Subsequently,
+the parameters will be compared in different states and only the ones that
+are changing will be printed out to fep file. The procedure is different for
+atom types and charges. All of q atoms type and charge will be added to fep
+file (it make it easier to further manipulate the fep/EVB if needed and have
+no effect on final results). The coupling will be suggested based on presence
+of breaking/forming bond in a angle, torsion and improper. The program can
+handle more than two states; however, the write out format might become messy
+in case of more than six states.
+
+\subsection*{How to compile:}
+You can move to the src folder and just run:
+
+%\lstset{language=bash,
+%frame=none,
+%basicstyle=\footnotesize\sffamily}
+%\begin{lstlisting}
+\begin{verbatim}
+For Intel Fortran:
+  ifort qfeper_pars.f90  qfeper_analyz.f90 qfeper.f90 -o qfeper
+
+For GCC fortran:
+  gfortran qfeper_pars.f90  qfeper_analyz.f90 qfeper.f90 -o qfeper
+
+
+
+
+To debug:
+  ifort -check all -debug all qfeper_pars.f90  qfeper_analyz.f90 qfeper.f90 -o qfeper
+\end{verbatim}
+%\end{lstlisting}
+
+
+\noindent
+Or you can also use make and compile using:
+
+\begin{verbatim}
+  make                       # this will show options
+  make all COMP=gcc          # this will compile and organize
+\end{verbatim}
+
+\paragraph{Masoud Kazemi  kazemimsoud@gmail.com}
+\end{document}
