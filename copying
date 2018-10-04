@@ -1,0 +1,13 @@
+Qfeper is provided under:
+
+	SPDX-License-Identifier: GPL-2.0 WITH qfeper-syscall-note
+
+Being under the terms of the GNU General Public License version 2 only,
+according with:
+
+	LICENSES/preferred/GPL-2.0
+
+With an explicit syscall exception, as stated at:
+
+	LICENSES/exceptions/qfeper-syscall-note
+
