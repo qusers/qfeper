@@ -1,3 +1,4 @@
 # Credits  
-masoud kazemi -- code creator  
+masoud kazemi 
+Mauricio Esguerra  
 
